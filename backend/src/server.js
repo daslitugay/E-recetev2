@@ -38,7 +38,7 @@ app.use(
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
-  'https://e-recete.vercel.app',
+  'https://e-recete-front.vercel.app',
   'https://e-recete-front-b015np8ei-kamil-ertaps-projects.vercel.app',
 ];
 
