@@ -35,9 +35,7 @@ app.use(
   })
 );
 
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
-  .split(',')
-  .map((origin) => origin.trim());
+const allowedOrigins = "https://e-recete.vercel.app";
 
 app.use(
   cors({
