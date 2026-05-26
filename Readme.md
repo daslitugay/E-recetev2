@@ -18,8 +18,8 @@ Evde bulunan ilaçların düzenli bir şekilde takip edilmesini sağlayan bu sis
 
 ## Proje Linkleri
 
-- **REST API Adresi:** [e-recete-api.vercel.app](https://e-recete-api.vercel.app)
-- **Web Frontend Adresi:** [e-recete.vercel.app](https://e-recete.vercel.app)
+- **REST API Adresi:** [e-recetev2-back.vercel.app](https://e-recetev2-back.vercel.app)
+- **Web Frontend Adresi:** [e-recetev2-front.vercel.app](https://e-recetev2-front.vercel.app)
 
 ---
 
