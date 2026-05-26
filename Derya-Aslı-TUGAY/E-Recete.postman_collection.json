@@ -1,0 +1,543 @@
+{
+  "info": {
+    "_postman_id": "b0e179c1-ff87-4e5a-bf9e-0f2f8068556c",
+    "name": "E-Recete",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50746694",
+    "_collection_link": "https://go.postman.co/collection/50746694-b0e179c1-ff87-4e5a-bf9e-0f2f8068556c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "IDnumber",
+              "value": "{{$randomInt}}",
+              "type": "text",
+              "uuid": "31d576c4-cc4b-41c3-871f-f002d1daaae1"
+            },
+            {
+              "key": "name",
+              "value": "test",
+              "type": "text",
+              "uuid": "d18a333d-db0d-45b6-82b1-f6a4e8ee49b9"
+            },
+            {
+              "key": "role",
+              "value": "patient",
+              "type": "text",
+              "uuid": "3cb4fc90-de55-4129-b4cf-a8d026e52cf2"
+            },
+            {
+              "key": "password",
+              "value": "123",
+              "type": "text",
+              "uuid": "7d55b89b-3316-4272-b63a-75c9f8d2707b"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/register",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let response = pm.response.json();\r",
+              "pm.environment.set(\"token\", response.token);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "IDnumber",
+              "value": "a",
+              "type": "text",
+              "uuid": "31d576c4-cc4b-41c3-871f-f002d1daaae1"
+            },
+            {
+              "key": "password",
+              "value": "a",
+              "type": "text",
+              "uuid": "7d55b89b-3316-4272-b63a-75c9f8d2707b"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/login",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AddMed",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let response = pm.response.json();\r",
+              "pm.environment.set(\"medId\", response._id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "test",
+              "type": "text",
+              "uuid": "f79aa955-c6ad-4cc3-bfcb-043f4bb67f8a"
+            },
+            {
+              "key": "expirationDate",
+              "value": "{{$randomDateFuture}}",
+              "type": "text",
+              "uuid": "06f3adf7-a876-4e81-9865-640f17130b5c"
+            },
+            {
+              "key": "unitsPerBox",
+              "value": "1",
+              "type": "text",
+              "uuid": "26620c3f-d4b7-401c-9479-08c2d09e266f"
+            },
+            {
+              "key": "boxCount",
+              "value": "1",
+              "type": "text",
+              "uuid": "aadc70de-7527-44f3-b995-94cb68e4eff6"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/medications",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "medications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ListMed",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/medications",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "medications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetMed",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/medications/{{medId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "medications",
+            "{{medId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdateMed",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "updated",
+              "type": "text",
+              "uuid": "a7f8b527-a190-4467-9d1e-7745c1afe6f3"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/medications/{{medId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "medications",
+            "{{medId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AddPres",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let response = pm.response.json();\r",
+              "pm.environment.set(\"presId\", response._id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"patientId\": \"0\",\r\n  \"doctorId\": \"5\",\r\n  \"datePrescribed\": \"2026-03-01\",\r\n  \"instructions\": \"test3169\",\r\n  \"medications\": [],\r\n  \"createdAt\": \"2026-03-25\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ListPres",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/prescriptions",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetPres",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdatePres",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "doctorId",
+              "value": "4",
+              "type": "text",
+              "uuid": "86a3fcce-7d21-4dbf-b6f5-4d5fded238fa"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AddMedToPres",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let response = pm.response.json();\r",
+              "pm.environment.set(\"medPresId\", response._id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "name",
+              "value": "test",
+              "type": "text",
+              "uuid": "a558a8ce-cf57-45c7-b0cb-dba63809565b"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}/medications",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}",
+            "medications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetMedsForPres",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}/medications",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}",
+            "medications"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetMedForPres",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}/medications/{{medPresId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}",
+            "medications",
+            "{{medPresId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdateMedFromPres",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "boxCount",
+              "value": "2",
+              "type": "text",
+              "uuid": "f7799ccd-9eac-4c41-856a-4c2de55e54a2"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}/medications/{{medPresId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}",
+            "medications",
+            "{{medPresId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DeleteMedFromPres",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}/medications/{{medPresId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}",
+            "medications",
+            "{{medPresId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DelPres",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/prescriptions/{{presId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "prescriptions",
+            "{{presId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DeleteMed",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/medications/{{medId}}",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "medications",
+            "{{medId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
