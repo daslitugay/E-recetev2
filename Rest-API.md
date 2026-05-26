@@ -1,6 +1,6 @@
 # REST API Görev Dağılımı
 
-**REST API Adresi:** [e-recete-api.vercel.app](https://e-recete-api.vercel.app)
+**REST API Adresi:** [e-recetev2-back.vercel.app](https://e-recetev2-back.vercel.app)
 
 Bu dokümanda, proje ekibindeki her üyenin geliştirmekten sorumlu olduğu REST API metotları listelenmektedir.
 
